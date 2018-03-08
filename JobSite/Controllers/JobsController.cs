@@ -75,11 +75,11 @@ namespace JobSite.Controllers
             return View(job);
         }
         [HttpPost]
-        public ActionResult GetCitysWithTheMostJobs(Job job)
+        public ActionResult GetCitysWithTheMostJobs()
         {
-            //Currently this erases the Table. I think I need to return a partial view 
+            //This is temporary I dont want to reload the whole page looking into using a partial view
            ViewData["answer"] = jobQ.GetCitysWithTheMostJobs(db.Jobs);
-            return View("Analytics");
+            return View("Index", db.Jobs.ToList());
         }
 
         // POST: Jobs/Edit/5

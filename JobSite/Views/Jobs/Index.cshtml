@@ -66,13 +66,13 @@
     }
 </table>
 @*Still learning partial views*@
-<div>
+@*<div>
     @{Html.RenderAction("Analytics", "Jobs");}
-</div>
+</div>*@
 
-@*@using (Html.BeginForm("GetCitysWithTheMostJobs", "Jobs", FormMethod.Post))
+@using (Html.BeginForm("GetCitysWithTheMostJobs", "Jobs", FormMethod.Post))
 {
 
 @Html.TextBox("answer")
 <button type="submit">What City'(s) Has the most Jobs?</button>
-}*@
+}
