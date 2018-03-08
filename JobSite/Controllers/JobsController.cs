@@ -78,8 +78,8 @@ namespace JobSite.Controllers
         public ActionResult GetCitysWithTheMostJobs(Job job)
         {
             //Currently this erases the Table. I think I need to return a partial view 
-           ViewData["answer"] = jobQ.GetCitysWithTheMostJobs(db.Jobs); 
-           return  View("Index");
+           ViewData["answer"] = jobQ.GetCitysWithTheMostJobs(db.Jobs);
+            return View("Analytics");
         }
 
         // POST: Jobs/Edit/5
@@ -111,6 +111,10 @@ namespace JobSite.Controllers
                 return HttpNotFound();
             }
             return View(job);
+        }
+        public ActionResult Analytics()
+        {
+            return PartialView("Analytics");
         }
 
         // POST: Jobs/Delete/5

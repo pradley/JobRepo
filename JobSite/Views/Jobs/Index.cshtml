@@ -31,12 +31,12 @@
         </th>
         <th></th>
     </tr>
-    @if (Model!=null)
+    @if (Model != null)
     {
-      
 
-    foreach (var item in Model)
-    {
+
+        foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Company)
@@ -62,12 +62,17 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
             </td>
         </tr>
-    }
+        }
     }
 </table>
-@using (Html.BeginForm("GetCitysWithTheMostJobs", "Jobs", FormMethod.Post))
+@*Still learning partial views*@
+<div>
+    @{Html.RenderAction("Analytics", "Jobs");}
+</div>
+
+@*@using (Html.BeginForm("GetCitysWithTheMostJobs", "Jobs", FormMethod.Post))
 {
 
 @Html.TextBox("answer")
 <button type="submit">What City'(s) Has the most Jobs?</button>
-}
+}*@
