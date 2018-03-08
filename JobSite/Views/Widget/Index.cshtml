@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Widget";
+}
+<h2>Widgets</h2>
+@using (Html.BeginForm("ReverseString", "Widget", FormMethod.Post))
+{
+    <p>Enter the string you want reversed</p>
+
+    @Html.TextBox("input")
+    <button type="submit">Reverse</button>
+    @Html.TextBox("result")
+}
+
+@using (Html.BeginForm("SumEvenNumbers", "Widget", FormMethod.Post))
+{
+    <p>Enter a comma seperated list a number's and press Sum to get the total of all even numbers</p>
+
+    @Html.TextBox("list")
+    <button type="submit">Sum</button>
+    @Html.TextBox("total")
+}
