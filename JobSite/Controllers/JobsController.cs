@@ -74,12 +74,12 @@ namespace JobSite.Controllers
             }
             return View(job);
         }
-        [HttpPost]
+
         public ActionResult GetCitysWithTheMostJobs()
         {
             //This is temporary I dont want to reload the whole page looking into using a partial view
-           ViewData["answer"] = jobQ.GetCitysWithTheMostJobs(db.Jobs);
-            return View("Index", db.Jobs.ToList());
+           //ViewData["answer"] = jobQ.GetCitysWithTheMostJobs(db.Jobs);
+            return Content(jobQ.GetCitysWithTheMostJobs(db.Jobs),"text/plain");
         }
 
         // POST: Jobs/Edit/5

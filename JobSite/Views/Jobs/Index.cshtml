@@ -37,42 +37,60 @@
 
         foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Company)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Distcance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distcance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
+                </td>
+
+            </tr>
         }
     }
 </table>
-@*Still learning partial views*@
-@*<div>
-    @{Html.RenderAction("Analytics", "Jobs");}
-</div>*@
 
-@using (Html.BeginForm("GetCitysWithTheMostJobs", "Jobs", FormMethod.Post))
-{
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 
 @Html.TextBox("answer")
-<button type="submit">What City'(s) Has the most Jobs?</button>
-}
+<button id="button" class="city-btn" type="submit">What City'(s) Has the most Jobs?</button>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('.city-btn').click(function () {
+
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetCitysWithTheMostJobs", "Jobs")',
+                success: function (result) {
+                    $('#answer').val(result)
+                }
+            })
+        });
+
+    });
+</script>
+
+
+@*TODO Get this script refrence working and delete the above btn.click code 
+<script src="~/Scripts/buttonUpdate.js"></script>*@
