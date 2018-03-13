@@ -22,4 +22,9 @@ namespace JobSite.Models
         public string Date { get; set; }
         public string City { get; set; }
     }
+
+
+
+
+
 }

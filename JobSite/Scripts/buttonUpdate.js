@@ -1,5 +1,4 @@
 ﻿$(function () {
-
     $('.city-btn').click(function () {
 
         $.ajax({

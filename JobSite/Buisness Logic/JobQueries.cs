@@ -42,5 +42,20 @@ namespace JobSite.Buisness_Logic
              
             return sb.ToString();
         }
+
+        internal bool JobHasBeenAdded(DbSet<Job> jobs, string companyName)
+        {
+            if (jobs.Any(c => c.Company == companyName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+
     }
 }

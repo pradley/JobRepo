@@ -70,15 +70,16 @@
 
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-
+<script src="~/Scripts/buttonUpdate.js" type="text/javascript"></script>
 @Html.TextBox("answer")
-<button id="button" class="city-btn" type="submit">What City'(s) Has the most Jobs?</button>
+<button id="button" class="city-btn " type="submit">What City'(s) Has the most Jobs?</button>
 <script type="text/javascript">
 
     $(function () {
 
         $('.city-btn').click(function () {
 
+            
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("GetCitysWithTheMostJobs", "Jobs")',
@@ -90,7 +91,6 @@
 
     });
 </script>
-
 
 @*TODO Get this script refrence working and delete the above btn.click code 
 <script src="~/Scripts/buttonUpdate.js"></script>*@

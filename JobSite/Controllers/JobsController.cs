@@ -46,12 +46,18 @@ namespace JobSite.Controllers
         // POST: Jobs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+   
+        //[ValidateAntiForgeryToken]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "JobID,Company,Role,Language,Distcance,Date,City")] Job job)
         {
             if (ModelState.IsValid)
             {
+                //TODO Remove null check by not allowing the user to pass in a null object 
+                if (job.Company==null || jobQ.JobHasBeenAdded(db.Jobs,job.Company))
+                { 
+                    return Content("This Job has already been added");
+                }
                 db.Jobs.Add(job);
                 db.SaveChanges();
                 return RedirectToAction("Index");
