@@ -1,10 +1,11 @@
 ﻿$(function () {
-    $('.city-btn').click(function () {
+    $('.analytics-btn').click(function () {
+        var buttonClicked = this;
         $.ajax({
             type: 'GET',
-            url: '/Jobs/GetCitysWithTheMostJobs',
+            url: buttonClicked.getAttribute('data-url'),
             success: function (result) {
-                $('#answer').val(result)
+                $(buttonClicked.getAttribute('data-answer')).val(result);
             }
         })
     });

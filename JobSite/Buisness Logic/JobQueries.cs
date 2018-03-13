@@ -56,6 +56,10 @@ namespace JobSite.Buisness_Logic
 
         }
 
+        internal string NumberOfJobsAppliedFor(DbSet<Job> jobs)
+        {
 
+            return jobs.Count().ToString();
+        }
     }
 }

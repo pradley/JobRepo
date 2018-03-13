@@ -47,7 +47,7 @@ namespace JobSite.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
    
-        //[ValidateAntiForgeryToken]
+       //TODO [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Create([Bind(Include = "JobID,Company,Role,Language,Distcance,Date,City")] Job job)
         {
@@ -83,9 +83,14 @@ namespace JobSite.Controllers
 
         public ActionResult GetCitysWithTheMostJobs()
         {
-            //This is temporary I dont want to reload the whole page looking into using a partial view
-           //ViewData["answer"] = jobQ.GetCitysWithTheMostJobs(db.Jobs);
+
+
             return Content(jobQ.GetCitysWithTheMostJobs(db.Jobs),"text/plain");
+        }
+
+        public ActionResult NumberOfJobsAppliedFor()
+        {
+            return Content(jobQ.NumberOfJobsAppliedFor(db.Jobs), "text/plain");
         }
 
         // POST: Jobs/Edit/5

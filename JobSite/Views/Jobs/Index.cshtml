@@ -70,10 +70,10 @@
 
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="~/Scripts/buttonUpdate.js" ></script>
+<script type="text/javascript" src="~/Scripts/buttonUpdate.js"></script>
 @Html.TextBox("answer")
-<button id="button" class="city-btn " type="submit">What City'(s) Has the most Jobs?</button>
-
-
-@*TODO Get this script refrence working and delete the above btn.click code 
-<script src="~/Scripts/buttonUpdate.js"></script>*@
+<button id="button" class="analytics-btn" data-url="'/Jobs/GetCitysWithTheMostJobs'" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
+<br />
+<br/>
+@Html.TextBox("amount")
+<button id="button" class="analytics-btn" data-url="/Jobs/NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
