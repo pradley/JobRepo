@@ -73,23 +73,8 @@
 </form>
 
  <script src="~/Scripts/jquery-1.10.2.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="~/Scripts/CreateJob.js"></script>
 
-    $(function () {
-
-        $('.createButton').click(function () {
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("Create", "Jobs")',
-                data: $("#createJob").serialize(),
-                success: function (result) {
-                    alert(result);
-                }
-            })
-        });
-
-    });
-</script>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

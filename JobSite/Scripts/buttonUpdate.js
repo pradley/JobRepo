@@ -1,9 +1,8 @@
 ﻿$(function () {
     $('.city-btn').click(function () {
-
         $.ajax({
             type: 'GET',
-            url: '@Url.Action("GetCitysWithTheMostJobs", "Jobs")',
+            url: '/Jobs/GetCitysWithTheMostJobs',
             success: function (result) {
                 $('#answer').val(result)
             }
