@@ -1,6 +1,6 @@
 ﻿$(function () {
     $('.createButton').click(function () {
-        //Need to pass antiforgery token 
+        // TODO Need to pass antiforgery token 
         $.ajax({
             type: "POST",
             url: '/Jobs/Create',

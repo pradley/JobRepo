@@ -53,8 +53,8 @@ namespace JobSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO Remove null check by not allowing the user to pass in a null object 
-                if (job.Company==null || jobQ.JobHasBeenAdded(db.Jobs,job.Company))
+
+                if (jobQ.JobHasBeenAdded(db.Jobs,job.Company))
                 { 
                     return Content("This Job has already been added");
                 }
