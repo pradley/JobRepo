@@ -1,8 +1,5 @@
 ﻿body {
 }
-
-nav p {
-
-    font-family: arial;
-    font-size :larger;
+p.blue{
+color: blue;
 }

@@ -6,7 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" type="text/css" href="~/Content/DropDown.css"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/DropDown.css" />
+
+
 
 </head>
 <body>
@@ -22,21 +24,19 @@
 
 
 
-        @*<ul>
-                <li>
-                    @Html.ActionLink("Jobs Page", "Index", "Jobs")
-                    <ul>
-                        <li><a href="#">Create</a></li>
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Art</a></li>
-                        <li><a href="#">Art</a></li>
-                    </ul>
-                </li>
+        @* Comming back to this drop down list TODO <ul>
+            <li>
+                @Html.ActionLink("Jobs Page", "Index", "Jobs")
+                <ul>
+                    <li><a href="#">Create</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Art</a></li>
+                    <li><a href="#">Art</a></li>
+                </ul>
+            </li>
 
 
-            </ul>*@
-
-
+        </ul>*@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav"></ul>
         </div>
@@ -48,23 +48,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-    @*For my refrence 
-        <input id="fuck" name="fuck" type="text" value="Fuck" />
-    <button type="submit" id="butt" onclick="buttonUpdate">What City'(s) Has the most Jobs?</button>
-
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/buttonUpdate.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-
-            $("#fuck").hide(400).show(400);
-        })
-
-
-    </script>*@
-
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
