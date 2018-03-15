@@ -12,3 +12,5 @@
     });
 
 });
+
+ //TODO Bug when you submit the first Duplicate entry the alert message doesnt show  

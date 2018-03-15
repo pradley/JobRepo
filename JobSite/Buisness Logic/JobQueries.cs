@@ -36,7 +36,7 @@ namespace JobSite.Buisness_Logic
             }
 
             //Remove the trailing comma 
-
+           
             sb.Remove(sb.ToString().Length-1, 1);
 
              
