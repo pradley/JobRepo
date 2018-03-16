@@ -4,3 +4,27 @@ p.blue{
 color: blue;
 }
 
+.box{
+
+    border: 3px solid blue;
+    width: 100px;
+    background: #0b8383;
+    margin: 5px;
+    margin-left: 5px;
+    display: inline-block;
+    opacity: 1;
+    height: 100px;
+    
+}
+.bigBox {
+    min-height: 400px;
+}
+
+.inline {
+    vertical-align: top;
+    display: inline-block !important;
+}
+.rowWrapper {
+        min-height:100px;
+}
+

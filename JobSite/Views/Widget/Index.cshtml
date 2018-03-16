@@ -5,21 +5,59 @@
 <h2>Widgets</h2>
 @using (Html.BeginForm("ReverseString", "Widget", FormMethod.Post))
 {
+<div class="col-auto">
+
+
     <p id="pp">Enter the string you want reversed</p>
 
     @Html.TextBox("input")
     <button type="submit">Reverse</button>
     @Html.TextBox("result")
+</div>
 }
 
 @using (Html.BeginForm("SumEvenNumbers", "Widget", FormMethod.Post))
 {
-    <br />
-    <p>Enter a comma seperated list a number's and press Sum to get the total of all even numbers</p>
+    <div class="col-auto">
 
-    @Html.TextBox("list")
-    <button type="submit">Sum</button>
-    @Html.TextBox("total")
+        <br />
+        <p>Enter a comma seperated list a number's and press Sum to get the total of all even numbers</p>
+
+        @Html.TextBox("list")
+        <button type="submit">Sum</button>
+        @Html.TextBox("total")
+    </div>
 }
+<br />
+<br />
+
+
+<div class="bigBox">
+
+    <p>Click the Buttons to view the animations</p>
+
+    <div class="rowWrapper">
+
+
+        <div class="col-md-2 inline">
+            <button class="animation" id="a1"> Animation 1</button>
+        </div>
+
+        <div class="col-md-9 inline">
+            <div class="box"> box 1</div>
+            <div class="box"> box 2</div>
+            <div class="box"> box 3</div>
+            <div class="box"> box 4</div>
+            <div class="box"> box 5</div>
+            <div class="box"> box 6</div>
+        </div>
+    </div>
+
+</div>
+
+
+
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/Animations/WidgetAnimations.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/DropDown.css" />
