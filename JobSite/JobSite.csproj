@@ -319,6 +319,7 @@
       <LastGenOutput>CentralDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\Animations\HideShow.js" />
+    <Content Include="Scripts\Animations\NavBarAnimations.js" />
     <Content Include="Scripts\Animations\WidgetAnimations.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

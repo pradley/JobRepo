@@ -2,6 +2,8 @@
 }
 
 .navbar > a{
-    padding-right: 230px;
+    padding-right: 30px;
+    opacity: 0.0;
+    
 }
 

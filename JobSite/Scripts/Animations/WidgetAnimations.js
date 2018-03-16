@@ -13,7 +13,7 @@
                     border: "25px",
                     opacity: "0.0",
                 },
-                appearSpeed
+                removeSpeed
 
 
             )
