@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="~/Scripts/JobScripts/jobExistsScript.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/Custom.css" />
 
 <h2>Job Listings</h2>
 
@@ -66,14 +69,20 @@
         }
     }
 </table>
+<hr />
 
 
 
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="~/Scripts/JobScripts/buttonUpdate.js"></script>
 @Html.TextBox("answer")
-<button id="button" class="analytics-btn" data-url="/Jobs/GetCitysWithTheMostJobs" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
+<button id="button" class="getRequest-btn" data-url="/Jobs/GetCitysWithTheMostJobs" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
 <br />
-<br/>
+<br />
 @Html.TextBox("amount")
-<button id="button" class="analytics-btn" data-url="/Jobs/NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
+<button id="button" class="getRequest-btn" data-url="/Jobs/NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
+<br />
+<br />
+@Html.TextBox("jobExists")
+<button id="button" class="postRequest-btn" data-url="/Jobs/JobExists" data-answer="#amount" type="submit">Have I applied for this Job?</button>
+
+
+<p id="jobExistsAnswer" class="hidden">This Job has already been applied for</p>

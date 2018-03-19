@@ -46,16 +46,16 @@ namespace JobSite.Controllers
         // POST: Jobs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-   
-       //TODO [ValidateAntiForgeryToken]
+
+        //TODO [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Create([Bind(Include = "JobID,Company,Role,Language,Distcance,Date,City")] Job job)
         {
             if (ModelState.IsValid)
             {
 
-                if (jobQ.JobHasBeenAdded(db.Jobs,job.Company))
-                { 
+                if (jobQ.JobHasBeenAdded(db.Jobs, job.Company))
+                {
                     return Content("This Job has already been added");
                 }
                 db.Jobs.Add(job);
@@ -64,6 +64,25 @@ namespace JobSite.Controllers
             }
 
             return View(job);
+        }
+
+        [HttpPost]
+        public ActionResult JobExists(string companyName)
+        {
+            if (ModelState.IsValid)
+            {
+
+                if (jobQ.JobHasBeenAdded(db.Jobs, companyName))
+                {
+                    return Json("Yes");
+                }
+                else
+                {
+                    return Json("No");
+                }
+              
+            }
+            return View();
         }
 
         // GET: Jobs/Edit/5
@@ -83,8 +102,6 @@ namespace JobSite.Controllers
 
         public ActionResult GetCitysWithTheMostJobs()
         {
-
-
             return Content(jobQ.GetCitysWithTheMostJobs(db.Jobs),"text/plain");
         }
 

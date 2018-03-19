@@ -45,7 +45,7 @@ namespace JobSite.Buisness_Logic
 
         internal bool JobHasBeenAdded(DbSet<Job> jobs, string companyName)
         {
-            if (jobs.Any(c => c.Company == companyName))
+            if (jobs.Any(c => c.Company.ToLower() == companyName.ToLower()))
             {
                 return true;
             }

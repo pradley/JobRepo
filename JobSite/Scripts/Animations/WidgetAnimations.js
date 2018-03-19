@@ -21,13 +21,6 @@
             removeSpeed = removeSpeed - 100;
         })
 
-        setTimeout(function () {
-            $('[class=box]').each(function () {
-
-               // $(this).fadeOut();
-            })
-        });
-
     });
 
 

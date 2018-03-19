@@ -28,3 +28,13 @@ color: blue;
         min-height:100px;
 }
 
+#jobExistsAnswer {
+    position: absolute;
+    top: 1458px;
+    left: 1790px;
+}
+
+.hidden{
+    opacity :0.0;
+}
+

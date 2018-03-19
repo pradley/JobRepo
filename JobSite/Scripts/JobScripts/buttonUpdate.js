@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $('.analytics-btn').click(function () {
+    $('.getRequest-btn').click(function () {
         var buttonClicked = this;
         $.ajax({
             type: 'GET',
