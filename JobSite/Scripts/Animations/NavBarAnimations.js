@@ -1,8 +1,9 @@
 ﻿$(function () {
-    sessionStorage.setItem("firstVisit", "0");
-    if (sessionStorage.firstVisit === "0") {
 
-        $('.navbar > a').each(function () {
+     var firstVisit = sessionStorage.getItem("firstVisit");
+     if (!firstVisit) {
+        var navBar = $('.invisable > a');
+        navBar.each(function () {
             $(this).animate(
                 {
                     "padding-right": "230px",
@@ -11,11 +12,14 @@
                 4000
             )
 
-        
         });
-        sessionStorage.setItem("firstVisit", "1");
-    }
 
-  
+        $(".invisable").removeClass("invisable").addClass("visable");
+
+        sessionStorage.setItem("firstVisit", "true");
+     }
+     else {
+         $(".invisable").removeClass("invisable").addClass("visable");
+     }
 
 });

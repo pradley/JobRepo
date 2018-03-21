@@ -1,9 +1,15 @@
 ﻿body {
 }
 
-.navbar > a{
+.invisable > a {
     padding-right: 30px;
     opacity: 0.0;
-    
 }
+
+.visable > a  {
+    padding-right: 230px;
+    opacity: 0.9;
+}
+
+
 

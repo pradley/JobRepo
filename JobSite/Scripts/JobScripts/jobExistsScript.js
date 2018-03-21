@@ -14,7 +14,7 @@
                     {
                         left: '900px',
                         opacity: '0.9'
-                    }, 3000
+                    }, 3000, "easeOutBounce"
                 );
                 $("#jobExistsAnswer").animate({ opacity: '0.0' }, 5000);
                 $("#jobExistsAnswer").animate({ left: '1790px' }, 7000);
