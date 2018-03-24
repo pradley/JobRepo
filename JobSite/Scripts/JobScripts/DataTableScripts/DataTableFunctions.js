@@ -1,11 +1,13 @@
 ﻿$(function () {
     $("#Company").click(function () {
         var orderBy = this.getAttribute('data-order');
-        if (orderBy === "ascending") {
+        if (orderBy === "ascending")
+        {
             sortCompanysBy(orderBy);
             this.setAttribute('data-order', 'descending');
-
-        } else if (orderBy === "descending") {
+        }
+        else if (orderBy === "descending")
+        {
             sortCompanysBy(orderBy);
             this.setAttribute('data-order', 'ascending');
         }
@@ -37,12 +39,4 @@ function sortCompanysBy(order) {
             }
         }
     });
-}
-
-function alerter() {
-    alert('1');
-}
-
-function alerte() {
-    alert('2');
 }
