@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using JobSite.Models;
 
-namespace JobSite.Buisness_Logic
+namespace JobSite.Business_Logic
 {
     public class JobQueries
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace JobSite.Buisness_Logic
+namespace JobSite.Business_Logic
 {
     public class WigetUtility
     {

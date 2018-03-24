@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using JobSite.Buisness_Logic;
+using JobSite.Business_Logic;
 using JobSite.Models;
 
 namespace JobSite.Controllers
@@ -15,6 +15,9 @@ namespace JobSite.Controllers
     {
         private CentralDBEntities1 db = new CentralDBEntities1();
         private JobQueries jobQ = new JobQueries();
+        private SortFactory sortFactory;
+
+     
 
         // GET: Jobs
         public ActionResult Index()
@@ -64,6 +67,21 @@ namespace JobSite.Controllers
             }
 
             return View(job);
+        }
+
+        [HttpPost]
+        public ActionResult OrderBy(string key, string order)
+        {
+            sortFactory = new SortFactory(db.Jobs,order);
+
+            var sortMethod = sortFactory.GetSortMethod(key);
+
+            var result = sortMethod();
+
+            
+
+           return Json(result);
+    
         }
 
         [HttpPost]

@@ -6,6 +6,7 @@
 
 
 <script type="text/javascript" src="~/Scripts/JobScripts/jobExistsScript.js"></script>
+<script type="text/javascript" src="~/Scripts/JobScripts/DataTableScripts/DataTableFunctions.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="~/Content/Custom.css" />
@@ -17,10 +18,12 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        
+        <th id="Company" data-order="ascending">
             @Html.DisplayNameFor(model => model.Company)
+                  
         </th>
-        <th>
+        <th id="Role">
             @Html.DisplayNameFor(model => model.Role)
         </th>
         <th>
@@ -89,3 +92,4 @@
 
 
 <p id="jobExistsAnswer" class="hidden">This Job has already been applied for</p>
+

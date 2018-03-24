@@ -7,7 +7,7 @@
             success: function (result) {
                 $(buttonClicked.getAttribute('data-answer')).val(result);
             }
-        })
+        });
     });
 
 });

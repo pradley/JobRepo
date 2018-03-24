@@ -161,8 +161,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Buisness Logic\JobQueries.cs" />
-    <Compile Include="Buisness Logic\WigetUtility.cs" />
+    <Compile Include="Business Logic\JobQueries.cs" />
+    <Compile Include="Business Logic\SortFactory.cs" />
+    <Compile Include="Business Logic\SortMethods.cs" />
+    <Compile Include="Business Logic\WigetUtility.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
@@ -376,6 +378,7 @@
       <DependentUpon>CentralDBModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\JobScripts\buttonUpdate.js" />
+    <Content Include="Scripts\JobScripts\DataTableScripts\DataTableFunctions.js" />
     <Content Include="Scripts\JobScripts\jobExistsScript.js" />
     <Content Include="Scripts\JobScripts\CreateForumScript.js" />
     <Content Include="Scripts\JobScripts\CreateJobButton.js" />

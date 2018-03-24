@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using JobSite.Buisness_Logic;
+using JobSite.Business_Logic;
 
 namespace JobSite.Controllers
 {
