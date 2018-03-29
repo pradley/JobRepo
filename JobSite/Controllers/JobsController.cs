@@ -16,6 +16,7 @@ namespace JobSite.Controllers
         private CentralDBEntities1 db = new CentralDBEntities1();
         private JobQueries jobQ = new JobQueries();
         private SortFactory sortFactory;
+ 
 
      
 
@@ -72,6 +73,7 @@ namespace JobSite.Controllers
         [HttpPost]
         public ActionResult OrderBy(string key, string order)
         {
+
             sortFactory = new SortFactory(db.Jobs,order);
 
             var sortMethod = sortFactory.GetSortMethod(key);

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<JobSite.Models.Job>
-
+//Razor needs to check local storage 
 @{
     ViewBag.Title = "Index";
 }
@@ -42,10 +42,9 @@
     </tr>
     @if (Model != null)
     {
-
-
         foreach (var item in Model)
         {
+            var companyNameNoSpaces = item.Company.Replace(" ", "");
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Company)
@@ -65,10 +64,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
-                <td>
+                <td id="@(companyNameNoSpaces)">
                     @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
+                    <a href=""></a>
                 </td>
 
             </tr>
