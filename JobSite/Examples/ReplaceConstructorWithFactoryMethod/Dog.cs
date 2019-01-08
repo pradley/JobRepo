@@ -25,10 +25,10 @@ namespace JobSite.Examples.ReplaceConstructorWithFactoryMethod
 
         public static Dog Create(string dogType) 
         {
-            var poodleType = Assembly.GetExecutingAssembly().GetTypes().
+            var dog = Assembly.GetExecutingAssembly().GetTypes().
                 First(t => t.IsClass && t.Namespace == Namespace && t.Name == dogType);
  
-            return (Dog)Activator.CreateInstance(poodleType);
+            return (Dog)Activator.CreateInstance(dog);
         }
 
        
