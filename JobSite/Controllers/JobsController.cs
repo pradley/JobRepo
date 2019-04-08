@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobSite.Business_Logic;
+using JobSite.Examples.ReplaceConstructorWithFactoryMethod;
 using JobSite.Models;
 
 namespace JobSite.Controllers
@@ -23,6 +24,11 @@ namespace JobSite.Controllers
         // GET: Jobs
         public ActionResult Index()
         {
+            var poodle = Dog.Create("Poodle");
+            poodle.Bark();
+
+           
+
             return View(db.Jobs.ToList());
         }
 
@@ -128,6 +134,12 @@ namespace JobSite.Controllers
         public ActionResult NumberOfJobsAppliedFor()
         {
             return Content(jobQ.NumberOfJobsAppliedFor(db.Jobs), "text/plain");
+        }
+
+        [HttpPost]
+        public ActionResult JobQuery(string methodName )
+        {
+            return Content(jobQ.MethodCaller(methodName), "text/plain");
         }
 
         // POST: Jobs/Edit/5

@@ -381,7 +381,7 @@
     </Content>
     <Content Include="Scripts\JobScripts\buttonUpdate.js" />
     <Content Include="Scripts\JobScripts\DataTableScripts\DataTableFunctions.js" />
-    <Content Include="Scripts\JobScripts\jobExistsScript.js" />
+    <Content Include="Scripts\JobScripts\jobQuestionScript.js" />
     <Content Include="Scripts\JobScripts\CreateForumScript.js" />
     <Content Include="Scripts\JobScripts\CreateJobButton.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

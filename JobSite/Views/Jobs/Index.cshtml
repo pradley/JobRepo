@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<JobSite.Models.Job>
-//Razor needs to check local storage 
 @{
     ViewBag.Title = "Index";
 }
 
 
-<script type="text/javascript" src="~/Scripts/JobScripts/jobExistsScript.js"></script>
+<script type="text/javascript" src="~/Scripts/JobScripts/jobQuestionScript.js"></script>
 <script type="text/javascript" src="~/Scripts/JobScripts/DataTableScripts/DataTableFunctions.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
@@ -18,10 +17,10 @@
 </p>
 <table class="table">
     <tr>
-        
+
         <th id="Company" data-order="ascending">
             @Html.DisplayNameFor(model => model.Company)
-                  
+
         </th>
         <th id="Role">
             @Html.DisplayNameFor(model => model.Role)
@@ -42,7 +41,7 @@
     </tr>
     @if (Model != null)
     {
- 
+
         foreach (var item in Model)
         {
             var companyNameNoSpaces = item.Company.Replace(" ", "");
@@ -80,17 +79,18 @@
 
 
 
-@Html.TextBox("answer")
-<button id="button" class="getRequest-btn" data-url="/Jobs/GetCitysWithTheMostJobs" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
-<br />
-<br />
-@Html.TextBox("amount")
-<button id="button" class="getRequest-btn" data-url="/Jobs/NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
-<br />
-<br />
-@Html.TextBox("jobExists")
-<button id="button" class="postRequest-btn" data-url="/Jobs/JobExists" data-answer="#amount" type="submit">Have I applied for this Job?</button>
+
+    <button id="button" class="postRequest-btn" data-url="/Jobs/JobQuery" value="gg" name="answers" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
+    <br />
+    <br />
+    <button id="button" class="getRequest-btn" data-url="/Jobs/NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
+    <br />
+    <br />
+    @Html.TextBox("jobExists")
+    <button id="button" class="postRequest-btn" data-url="/Jobs/JobExists" data-answer="#amount" type="submit">Have I applied for this Job?</button>
 
 
-<p id="jobExistsAnswer" class="hidden">This Job has already been applied for</p>
+    <p id="jobExistsAnswer" class="hidden">This Job has already been applied for</p>
+
+
 

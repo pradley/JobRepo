@@ -25,7 +25,7 @@ $(function () {
 
 function sortCompanysBy(order) {
     var buttonClicked = this;
-    debugger;
+
     if (order) {
 
         $.ajax({

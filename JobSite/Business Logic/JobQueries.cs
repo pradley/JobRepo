@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Web;
 using JobSite.Models;
@@ -11,7 +12,7 @@ namespace JobSite.Business_Logic
     public class JobQueries
     {
 
-        internal string GetCitysWithTheMostJobs(DbSet<Job> jobs)
+        public string GetCitysWithTheMostJobs(DbSet<Job> jobs)
         {
             //When time permits I would to refactor this query to be more flexible by taking a variable from the user and returning the city with the most x
             var sb = new StringBuilder();
@@ -43,23 +44,28 @@ namespace JobSite.Business_Logic
             return sb.ToString();
         }
 
-        internal bool JobHasBeenAdded(DbSet<Job> jobs, string companyName)
+        public bool JobHasBeenAdded(DbSet<Job> jobs, string companyName)
         {
-            if (jobs.Any(c => c.Company.ToLower() == companyName.ToLower()))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return jobs.Any(c => c.Company.ToLower() == companyName.ToLower()) ?  true: false;
 
         }
 
-        internal string NumberOfJobsAppliedFor(DbSet<Job> jobs)
+        public string TestMethod( string output)
+        {
+            return "Hallo";
+        }
+
+        public string NumberOfJobsAppliedFor(DbSet<Job> jobs)
         {
 
             return jobs.Count().ToString();
+        }
+
+        public string MethodCaller(string methodName)
+        {
+            MethodInfo theMethod = this.GetType().GetMethod(methodName);
+           var result = theMethod.Invoke(this, new object[] { methodName });
+            return result.ToString();
         }
     }
 }
