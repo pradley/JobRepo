@@ -6,7 +6,7 @@
             //TODO Add error method 
             type: 'POST',
             url: buttonClicked.getAttribute('data-url'),
-            data: { methodName: "ds" },
+            data: { methodName: buttonClicked.value },
             dataType: "json",
             success: function (result) {
                 $("#jobExistsAnswer").text(result);

@@ -12,7 +12,7 @@ namespace JobSite.Controllers
 {
     public class UsersController : Controller
     {
-        private CentralDBEntities1 db = new CentralDBEntities1();
+        private JobContext db = new JobContext();
 
         // GET: Users
         public ActionResult Index()

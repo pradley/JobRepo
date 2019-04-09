@@ -14,12 +14,16 @@ namespace JobSite.Controllers
 {
     public class JobsController : Controller
     {
-        private CentralDBEntities1 db = new CentralDBEntities1();
-        private JobQueries jobQ = new JobQueries();
-        private SortFactory sortFactory;
- 
-
+        private JobContext jobContext = new JobContext();
      
+        private SortFactory sortFactory;
+
+        private JobQueries jobQueries;
+
+        public JobsController()
+        {
+             jobQueries = new JobQueries(jobContext);
+        }
 
         // GET: Jobs
         public ActionResult Index()
@@ -27,9 +31,7 @@ namespace JobSite.Controllers
             var poodle = Dog.Create("Poodle");
             poodle.Bark();
 
-           
-
-            return View(db.Jobs.ToList());
+            return View(jobContext.Jobs.ToList());
         }
 
         // GET: Jobs/Details/5
@@ -39,7 +41,7 @@ namespace JobSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = db.Jobs.Find(id);
+            Job job = jobContext.Jobs.Find(id);
             if (job == null)
             {
                 return HttpNotFound();
@@ -61,17 +63,12 @@ namespace JobSite.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "JobID,Company,Role,Language,Distcance,Date,City")] Job job)
         {
-            if (ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) return RedirectToAction("Index");
+         
+            if (jobQueries.JobHasBeenAdded(job.Company)) return Content("This Job has already been added");
 
-                if (jobQ.JobHasBeenAdded(db.Jobs, job.Company))
-                {
-                    return Content("This Job has already been added");
-                }
-                db.Jobs.Add(job);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            jobContext.Jobs.Add(job);
+            jobContext.SaveChanges();
 
             return View(job);
         }
@@ -80,7 +77,7 @@ namespace JobSite.Controllers
         public ActionResult OrderBy(string key, string order)
         {
 
-            sortFactory = new SortFactory(db.Jobs,order);
+            sortFactory = new SortFactory(jobContext.Jobs,order);
 
             var sortMethod = sortFactory.GetSortMethod(key);
 
@@ -92,24 +89,24 @@ namespace JobSite.Controllers
     
         }
 
-        [HttpPost]
-        public ActionResult JobExists(string companyName)
-        {
-            if (ModelState.IsValid)
-            {
+        //[HttpPost]
+        //public ActionResult JobExists(string companyName)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
 
-                if (jobQ.JobHasBeenAdded(db.Jobs, companyName))
-                {
-                    return Json("Yes");
-                }
-                else
-                {
-                    return Json("No");
-                }
+        //        if (jobQueries.JobHasBeenAdded(jobContext.Jobs, companyName))
+        //        {
+        //            return Json("Yes");
+        //        }
+        //        else
+        //        {
+        //            return Json("No");
+        //        }
               
-            }
-            return View();
-        }
+        //    }
+        //    return View();
+        //}
 
         // GET: Jobs/Edit/5
         public ActionResult Edit(int? id)
@@ -118,7 +115,7 @@ namespace JobSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = db.Jobs.Find(id);
+            Job job = jobContext.Jobs.Find(id);
             if (job == null)
             {
                 return HttpNotFound();
@@ -126,20 +123,10 @@ namespace JobSite.Controllers
             return View(job);
         }
 
-        public ActionResult GetCitysWithTheMostJobs()
-        {
-            return Content(jobQ.GetCitysWithTheMostJobs(db.Jobs),"text/plain");
-        }
-
-        public ActionResult NumberOfJobsAppliedFor()
-        {
-            return Content(jobQ.NumberOfJobsAppliedFor(db.Jobs), "text/plain");
-        }
-
         [HttpPost]
-        public ActionResult JobQuery(string methodName )
+        public ActionResult JobQuery(string methodName)
         {
-            return Content(jobQ.MethodCaller(methodName), "text/plain");
+            return Content(jobQueries.MethodCaller(methodName), "text/plain");
         }
 
         // POST: Jobs/Edit/5
@@ -151,8 +138,8 @@ namespace JobSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(job).State = EntityState.Modified;
-                db.SaveChanges();
+                jobContext.Entry(job).State = EntityState.Modified;
+                jobContext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(job);
@@ -165,7 +152,7 @@ namespace JobSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = db.Jobs.Find(id);
+            Job job = jobContext.Jobs.Find(id);
             if (job == null)
             {
                 return HttpNotFound();
@@ -182,9 +169,9 @@ namespace JobSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Job job = db.Jobs.Find(id);
-            db.Jobs.Remove(job);
-            db.SaveChanges();
+            Job job = jobContext.Jobs.Find(id);
+            jobContext.Jobs.Remove(job);
+            jobContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -192,7 +179,7 @@ namespace JobSite.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                jobContext.Dispose();
             }
             base.Dispose(disposing);
         }

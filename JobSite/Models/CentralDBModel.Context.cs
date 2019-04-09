@@ -13,9 +13,9 @@ namespace JobSite.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CentralDBEntities1 : DbContext
+    public partial class JobContext : DbContext
     {
-        public CentralDBEntities1()
+        public JobContext()
             : base("name=CentralDBEntities1")
         {
         }
