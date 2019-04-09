@@ -52,20 +52,13 @@ namespace JobSite.Business_Logic
         public bool JobHasBeenAdded(string companyName) =>
             jobContext.Jobs.Any(c => c.Company.ToLower() == companyName.ToLower())  ?  true: false;
 
- 
-
         public string NumberOfJobsAppliedFor() => jobContext.Jobs.Count().ToString();
 
-
-
-        public string MethodCaller(string methodName)
+        public string MethodCaller(string methodName, string param)
         {
             MethodInfo theMethod = this.GetType().GetMethod(methodName);
-            var result = theMethod.Invoke(this, new object[] { methodName });
+            var result = param==null ? theMethod.Invoke(this,null) : theMethod.Invoke(this, new object[] { param});
             return result.ToString();
         }
-
-       
-      
     }
 }

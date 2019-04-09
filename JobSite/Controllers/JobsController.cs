@@ -124,9 +124,9 @@ namespace JobSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult JobQuery(string methodName)
+        public ActionResult JobQuery(string methodName,string param)
         {
-            return Content(jobQueries.MethodCaller(methodName), "text/plain");
+            return Json(jobQueries.MethodCaller(methodName,param), "text/plain");
         }
 
         // POST: Jobs/Edit/5

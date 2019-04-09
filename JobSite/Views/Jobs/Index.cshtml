@@ -77,46 +77,33 @@
 </table>
 <hr />
 
-<div class="container">
-    <div class="row ">
+<div class="container-fluid">
+    <div class="row form-group">
         <div class="col-sm-3">
-            <button id="button" class="postRequest-btn" data-url="/Jobs/JobQuery" value="NumberOfJobsAppliedFor" name="answers" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
+            <button id="button" class="request-btn" data-url="/Jobs/JobQuery" value="GetCitysWithTheMostJobs" name="answers" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
         </div>
-        <div class="col">
-            <p id="QueryAnswer">This Job has already been applied for</p>
+        <div id="GetCitysWithTheMostJobs" class="col">
+
         </div>
     </div>
-    <div class="row ">
+    <div class="row form-group">
         <div class="col-sm-3">
-            <button id="button" class="getRequest-btn" data-url="/Jobs/NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
+            <button id="button" class="request-btn" data-url="/Jobs/JobQuery"  value="NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
         </div>
-        <div class="col">
-            <p id="QueryAnswer">This Job has already been applied for</p>
+        <div id="NumberOfJobsAppliedFor" class="col">
+
         </div>
     </div>
-    <div class="row ">
+    <div class="row form-group">
         <div class="col-sm-2">
             @Html.TextBox("jobExists")
         </div>
         <div class="col-sm-3">
-            <button id="button" class="postRequest-btn" data-url="/Jobs/JobExists" data-answer="#amount" type="submit">Have I applied for this Job?</button>
-  
+            <button id="button" class="request-btn" data-url="/Jobs/JobQuery"  value="JobHasBeenAdded" data-answer="#amount" type="submit">Have I applied for this Job?</button>
         </div>
-        <div class="col-sm-3">
-            <p id="QueryAnswer">This Job has already been applied for</p>
+        <div id="JobHasBeenAdded" class="col-sm-3">
+
         </div>
+
     </div>
 </div>
-
-
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-
-
-
