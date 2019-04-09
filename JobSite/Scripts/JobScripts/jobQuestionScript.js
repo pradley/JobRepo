@@ -9,8 +9,7 @@
             data: { methodName: buttonClicked.value, param: $('#jobExists').val() },
             dataType: "json",
             success: function (result) {
-                $(`#${buttonClicked.value}`)
-                    .html(`<div id='QueryAnswer'>${result}</div>`)
+                $(`#${buttonClicked.value}`).html(`<div id='QueryAnswer'>${result}</div>`)
                 $("#QueryAnswer").animate(
                     {
                         left: '900px',
