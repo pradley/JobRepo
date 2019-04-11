@@ -20,7 +20,10 @@ namespace JobSite.Controllers
         {
             wm.StringToReverse = new string(Enumerable.Range(1, wm.StringToReverse.Length).Select(i => wm.StringToReverse[wm.StringToReverse.Length - i]).ToArray());
             return View("Index", wm);
+
+            
             //@Html.TextBox("Reverse box", null, new { @class = "Widget-Control" });
         }
+
     }
 }

@@ -6,20 +6,43 @@ var companyAndJobIds = {};
 $(function () {
     sortCompanysBy(orderChanged);
 
+    //#region EventHandlerSetUp
     $("#Company").click(function () {
         var orderBy = this.getAttribute('data-order');
-        if (orderBy === "ascending")
-        {
+        if (orderBy === "ascending") {
             sortCompanysBy(orderBy);
             this.setAttribute('data-order', 'descending');
         }
-        else if (orderBy === "descending")
-        {
+        else if (orderBy === "descending") {
             sortCompanysBy(orderBy);
             this.setAttribute('data-order', 'ascending');
         }
-        sessionStorage.setItem("orderChanged", orderBy );
+        sessionStorage.setItem("orderChanged", orderBy);
     });
+
+    $("#GlobalSearch").keyup(function () {
+        var input = this.value;
+        var jobsTable = $('.table');
+        var tableRows = jobsTable.find('tr');
+        tableRows.each(function (index) {
+            if (input == "") {
+                tableRows.each(function (index) {
+                    this.hidden = false;
+
+                });
+            }
+            else if (!this.innerText.includes(input)) {
+                this.hidden = true;
+            }
+            else {
+                this.hidden = false;
+            }
+
+        });
+    });
+
+    //#endregion
+
 
 });
 
@@ -59,7 +82,7 @@ function sortCompanysBy(order) {
                             //if you dont exist in collection then replace html
                             if (result != null && companyAndJobIds[companyNameID] == null) {
 
-                                companyAndJobIds[companyNameID] = editDeleteHTML
+                                companyAndJobIds[companyNameID] = editDeleteHTML;
                                 lastCell.innerHTML = $(companyIDSelector)[0].innerHTML;
                             }
                             else {

@@ -12,98 +12,107 @@
 
 <h2>Job Listings</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
 
-        <th id="Company" data-order="ascending">
-            @Html.DisplayNameFor(model => model.Company)
-
-        </th>
-        <th id="Role">
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Language)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Distcance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th></th>
-    </tr>
-    @if (Model != null)
-    {
-
-        foreach (var item in Model)
-        {
-            var companyNameNoSpaces = item.Company.Replace(" ", "");
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Company)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Role)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Language)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Distcance)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td id="@(companyNameNoSpaces)">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
-                    <a href=""></a>
-                </td>
-
-            </tr>
-        }
-    }
-</table>
-<hr />
-
-<div class="container-fluid">
-    <div class="row form-group">
-        <div class="col-sm-3">
-            <button id="button" class="request-btn" data-url="/Jobs/JobQuery" value="GetCitysWithTheMostJobs" name="answers" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
-        </div>
-        <div id="GetCitysWithTheMostJobs" class="col">
-
-        </div>
+<div class="row form-group">
+    <div class="col-sm-8">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
     </div>
-    <div class="row form-group">
-        <div class="col-sm-3">
-            <button id="button" class="request-btn" data-url="/Jobs/JobQuery"  value="NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
-        </div>
-        <div id="NumberOfJobsAppliedFor" class="col">
-
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-sm-2">
-            @Html.TextBox("jobExists")
-        </div>
-        <div class="col-sm-3">
-            <button id="button" class="request-btn" data-url="/Jobs/JobQuery"  value="JobHasBeenAdded" data-answer="#amount" type="submit">Have I applied for this Job?</button>
-        </div>
-        <div id="JobHasBeenAdded" class="col-sm-3">
-
-        </div>
-
+    <div class="col-sm-3">
+        <label>Search:</label>
+        @Html.TextBox("GlobalSearch")
     </div>
 </div>
+    <table class="table">
+        <tr>
+
+            <th id="Company" data-order="ascending">
+                @Html.DisplayNameFor(model => model.Company)
+
+            </th>
+            <th id="Role">
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distcance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+
+            foreach (var item in Model)
+            {
+                var companyNameNoSpaces = item.Company.Replace(" ", "");
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Company)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Language)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Distcance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td id="@(companyNameNoSpaces)">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
+                        <a href=""></a>
+                    </td>
+
+                </tr>
+            }
+        }
+    </table>
+    <hr />
+
+    <div class="container-fluid">
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <button id="button" class="request-btn" data-url="/Jobs/JobQuery" value="GetCitysWithTheMostJobs" name="answers" data-answer="#answer" type="submit">What City'(s) Has the most Jobs?</button>
+            </div>
+            <div id="GetCitysWithTheMostJobs" class="col">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-3">
+                <button id="button" class="request-btn" data-url="/Jobs/JobQuery" value="NumberOfJobsAppliedFor" data-answer="#amount" type="submit">How many jobs have I applied for?</button>
+            </div>
+            <div id="NumberOfJobsAppliedFor" class="col">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                @Html.TextBox("jobExists")
+            </div>
+            <div class="col-sm-3">
+                <button id="button" class="request-btn" data-url="/Jobs/JobQuery" value="JobHasBeenAdded" data-answer="#amount" type="submit">Have I applied for this Job?</button>
+            </div>
+            <div id="JobHasBeenAdded" class="col-sm-3">
+
+            </div>
+
+        </div>
+    </div>
