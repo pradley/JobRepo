@@ -85,18 +85,23 @@
         }
     </table>
     <hr />
-
+@{ 
+       //Lower and Upper are used to determin what rows will be on which page 
+      var lower = 11;
+      var upper = 21;
     <ul class="pagination">
         <li class="page-item"><a class="page-link">Previous</a></li>
-        <li class="page-item active"><a class="page-link">1</a></li>
+        <li class="page-item active" data-rows="1-11"><a class="page-link">1</a></li>
         @for (int i = 1; i < Model.Pages; i++)
         {
             var pageNumber = i + 1;
-            <li class="page-item"><a class="page-link">@pageNumber</a></li>
+            <li class="page-item" data-rows=@String.Concat(lower.ToString(), "-", upper.ToString())><a class="page-link" >@pageNumber</a></li>
+            lower = upper + 1;
+            upper = upper + 10;
         }
         <li class="page-item"><a class="page-link">Next</a></li>
     </ul>
-
+    }
 
 
     <div class="container-fluid">

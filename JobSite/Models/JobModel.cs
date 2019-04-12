@@ -8,6 +8,8 @@ namespace JobSite.Models
     public class JobModel
     {
         public List<Job> Jobs { get; set; }
-        public int Pages => Jobs.Count % 2 == 0 ? Jobs.Count / 10 : Convert.ToInt32(Math.Ceiling(Jobs.Count / 10M));
+
+        public int TotalJobs => Jobs.Count();
+        public int Pages => TotalJobs % 2 == 0 ? Jobs.Count / 10 : Convert.ToInt32(Math.Ceiling(TotalJobs / 10M));
     }
 }
