@@ -38,6 +38,9 @@ color: blue;
 
 }
 
+.pagination{
+    margin-left: 800px;
+}
 
 .hidden{
     opacity :0.0;

@@ -31,7 +31,9 @@ namespace JobSite.Controllers
             var poodle = Dog.Create("Poodle");
             poodle.Bark();
 
-            return View(jobContext.Jobs.ToList());
+            var jobModel = new JobModel() {Jobs = jobContext.Jobs.ToList()};
+
+            return View(jobModel);
         }
 
         // GET: Jobs/Details/5

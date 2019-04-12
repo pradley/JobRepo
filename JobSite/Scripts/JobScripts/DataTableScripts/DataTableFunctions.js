@@ -4,6 +4,7 @@
 var orderChanged = sessionStorage.getItem("orderChanged");
 var companyAndJobIds = {};
 $(function () {
+    DisplayFirstTableSet();
     sortCompanysBy(orderChanged);
 
     //#region EventHandlerSetUp
@@ -22,10 +23,9 @@ $(function () {
 
     $("#GlobalSearch").keyup(function () {
         var input = this.value;
-        var jobsTable = $('.table');
-        var tableRows = jobsTable.find('tr');
+        var tableRows = GetJobTableRows();
         tableRows.each(function (index) {
-            if (input == "") {
+            if (input === "") {
                 tableRows.each(function (index) {
                     this.hidden = false;
 
@@ -38,8 +38,61 @@ $(function () {
                 this.hidden = false;
             }
 
+            //TODO Add a No results row 
+
         });
     });
+
+
+    $(".page-item").click(function () {
+
+        var paginationData = sessionStorage.getItem("VisableRows").split("-");
+        var activePageButton = paginationData[0];
+
+        var pageButtons = $(".pagination").children();
+        pageButtons[activePageButton].classList.remove("active");
+
+        var clickedPageButton = this;
+        clickedPageButton.classList.add("active");
+
+        var lowerBound = parseInt(paginationData[1]);
+        var upperBound = parseInt(paginationData[2]);
+
+        var tableRows = GetJobTableRows();
+        tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = true; });
+
+        var activePageNumber = parseInt(activePageButton);
+        var clickedPageNumber = parseInt(clickedPageButton.innerText);
+
+        if (activePageNumber > clickedPageNumber) {
+            // Go to previous page 
+            var previousPaginationData = sessionStorage.getItem("PreviousRows").split("-");
+            lowerBound = parseInt(previousPaginationData[1]);
+            upperBound = parseInt(previousPaginationData[2]);
+
+            tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = false; });
+
+            sessionStorage.setItem("VisableRows", `${clickedPageButton.innerText}-${lowerBound}-${upperBound}`);
+        }
+        else {
+
+            sessionStorage.setItem("PreviousRows", `${activePageButton}-${lowerBound}-${upperBound}`);
+
+            tableRows.slice(upperBound, upperBound + 10).each(function (index) { this.hidden = false; });
+
+            sessionStorage.setItem("VisableRows", `${clickedPageButton.innerText}-${upperBound}-${upperBound + 10}`);
+
+        }
+
+
+  
+      
+
+    });
+
+
+
+
 
     //#endregion
 
@@ -98,4 +151,20 @@ function sortCompanysBy(order) {
             }
         });
     }
+}
+
+function GetJobTableRows() {
+    var jobsTable = $('.table');
+    var tableRows = jobsTable.find('tr');
+
+    return tableRows;
+
+}
+
+function DisplayFirstTableSet() {
+
+    var tableRows = GetJobTableRows();
+    tableRows.slice(11, tableRows.length).each(function (index) { this.hidden = true; });
+    sessionStorage.setItem("VisableRows", "1-1-11");
+
 }

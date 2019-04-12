@@ -193,6 +193,7 @@
     <Compile Include="Models\Job.cs">
       <DependentUpon>CentralDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobModel.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CentralDBModel.tt</DependentUpon>
     </Compile>

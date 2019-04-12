@@ -1,57 +1,57 @@
-﻿@model IEnumerable<JobSite.Models.Job>
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model JobSite.Models.JobModel
+    @{
+        ViewBag.Title = "Index";
+    }
 
 
-<script type="text/javascript" src="~/Scripts/JobScripts/jobQuestionScript.js"></script>
-<script type="text/javascript" src="~/Scripts/JobScripts/DataTableScripts/DataTableFunctions.js"></script>
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="~/Content/Custom.css" />
+    <script type="text/javascript" src="~/Scripts/JobScripts/jobQuestionScript.js"></script>
+    <script type="text/javascript" src="~/Scripts/JobScripts/DataTableScripts/DataTableFunctions.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Custom.css" />
 
-<h2>Job Listings</h2>
+    <h2>Job Listings</h2>
 
 
-<div class="row form-group">
-    <div class="col-sm-8">
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+    <div class="row form-group">
+        <div class="col-sm-8">
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <label>Search:</label>
+            @Html.TextBox("GlobalSearch")
+        </div>
     </div>
-    <div class="col-sm-3">
-        <label>Search:</label>
-        @Html.TextBox("GlobalSearch")
-    </div>
-</div>
     <table class="table">
         <tr>
 
             <th id="Company" data-order="ascending">
-                @Html.DisplayNameFor(model => model.Company)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().Company)
 
             </th>
             <th id="Role">
-                @Html.DisplayNameFor(model => model.Role)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().Role)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Language)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().Language)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Distcance)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().Distcance)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.Jobs.FirstOrDefault().City)
             </th>
             <th></th>
         </tr>
         @if (Model != null)
         {
 
-            foreach (var item in Model)
+            foreach (var item in Model.Jobs)
             {
                 var companyNameNoSpaces = item.Company.Replace(" ", "");
                 <tr>
@@ -85,6 +85,19 @@
         }
     </table>
     <hr />
+
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link">Previous</a></li>
+        <li class="page-item active"><a class="page-link">1</a></li>
+        @for (int i = 1; i < Model.Pages; i++)
+        {
+            var pageNumber = i + 1;
+            <li class="page-item"><a class="page-link">@pageNumber</a></li>
+        }
+        <li class="page-item"><a class="page-link">Next</a></li>
+    </ul>
+
+
 
     <div class="container-fluid">
         <div class="row form-group">
