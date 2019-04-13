@@ -45,59 +45,48 @@ $(function () {
 
 
     $(".page-item").click(function () {
-        //Disable previously active button
         var activePageButton = $("li.active");
-        activePageButton.removeClass("active");
-
-        //Hide previous rows
-        var lowerAndUpperBounds = activePageButton.attr("data-rows").split("-");
-        var lowerBound = parseInt(lowerAndUpperBounds[0]);
-        var upperBound = parseInt(lowerAndUpperBounds[1]);
-        var tableRows = GetJobTableRows();
-        tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = true; });
-
-
-        //TODO Make sure nothing happens when the same button is pressed twice in a row 
-        //TODO Make sure if someone presses next/previous and they are at the last page nothing happens 
-
-        //Figure out if its a Number pressed or the Next-Previous buttons
         var clickedPageButton = this;
+
+        //TODO stop table from moving when removing rows 
         if (isNaN(clickedPageButton.innerText)) {
+
             clickedPageButton.removeAttribute("active");
+
             if (clickedPageButton.innerText === "Next") {
                 var nextPageNumber = parseInt(activePageButton.text()) + 1; 
+                if (nextPageNumber > $("li[data-rows]").length) return;
+
+                activePageButton.removeClass("active");
+                HideShowRows(activePageButton.attr("data-rows"), true);
+
                 var nextPageButton = $(`li:contains(${nextPageNumber})`);
                 nextPageButton.addClass("active");
-                lowerAndUpperBounds = nextPageButton.attr("data-rows").split("-");
-                lowerBound = parseInt(lowerAndUpperBounds[0]);
-                upperBound = parseInt(lowerAndUpperBounds[1]);
-                tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = false; });
+                HideShowRows(nextPageButton.attr("data-rows"), false);
                 return;
             }
             else {
 
                 var previousPageNumber = parseInt(activePageButton.text()) - 1;
+                if (previousPageNumber === 0) return;
+
+                activePageButton.removeClass("active");
+                HideShowRows(activePageButton.attr("data-rows"), true);
+
                 var previousPageButton = $(`li:contains(${previousPageNumber})`);
                 previousPageButton.addClass("active");
-                lowerAndUpperBounds = previousPageButton.attr("data-rows").split("-");
-                lowerBound = parseInt(lowerAndUpperBounds[0]);
-                upperBound = parseInt(lowerAndUpperBounds[1]);
-                tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = false; });
+                HideShowRows(previousPageButton.attr("data-rows"), false);
                 return;
             }
 
         }
 
-        //Activate New button 
+        activePageButton.removeClass("active");
+        HideShowRows(activePageButton.attr("data-rows"), true);
 
         clickedPageButton.classList.add("active");
 
-        //Show New Rows
-        lowerAndUpperBounds = clickedPageButton.getAttribute("data-rows").split("-");
-        lowerBound = parseInt(lowerAndUpperBounds[0]);
-        upperBound = parseInt(lowerAndUpperBounds[1]);
-        tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = false; });
-
+        HideShowRows(clickedPageButton.getAttribute("data-rows"), false);
     });
     //#endregion
 });
@@ -165,6 +154,14 @@ function GetJobTableRows() {
 function DisplayFirstTableSet() {
     var tableRows = GetJobTableRows();
     tableRows.slice(11, tableRows.length).each(function (index) { this.hidden = true; });
+}
+
+function HideShowRows(rowNumbers,showRows) {
+    var lowerAndUpperBounds = rowNumbers.split("-");
+    var lowerBound = parseInt(lowerAndUpperBounds[0]);
+    var upperBound = parseInt(lowerAndUpperBounds[1]);
+    var tableRows = GetJobTableRows();
+    tableRows.slice(lowerBound, upperBound).each(function (index) { this.hidden = showRows; });
 }
 
 
