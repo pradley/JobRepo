@@ -57,7 +57,7 @@ namespace JobSite.Business_Logic
         public string MethodCaller(string methodName, string param)
         {
             MethodInfo theMethod = this.GetType().GetMethod(methodName);
-            var result = param==null ? theMethod.Invoke(this,null) : theMethod.Invoke(this, new object[] { param});
+            var result = param=="" ? theMethod.Invoke(this,null) : theMethod.Invoke(this, new object[] { param});
             return result.ToString();
         }
     }
