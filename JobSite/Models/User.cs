@@ -20,5 +20,6 @@ namespace JobSite.Models
         public int Age { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
+        public string Username { get; set; }
     }
 }

@@ -12,6 +12,7 @@
 
 </head>
 <body>
+    @Html.Partial("_LoginPartial")
     <div class="navbar navbar-fixed-top invisable">
 
         @Html.ActionLink("Job Analytics", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -25,18 +26,18 @@
 
 
         @* Comming back to this drop down list TODO <ul>
-            <li>
-                @Html.ActionLink("Jobs Page", "Index", "Jobs")
-                <ul>
-                    <li><a href="#">Create</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Art</a></li>
-                    <li><a href="#">Art</a></li>
-                </ul>
-            </li>
+                <li>
+                    @Html.ActionLink("Jobs Page", "Index", "Jobs")
+                    <ul>
+                        <li><a href="#">Create</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Art</a></li>
+                        <li><a href="#">Art</a></li>
+                    </ul>
+                </li>
 
 
-        </ul>*@
+            </ul>*@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav"></ul>
         </div>

@@ -13,20 +13,21 @@ namespace JobSite.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JobContext : DbContext
-    {
-        public JobContext()
-            : base("name=CentralDBEntities1")
-        {
-        }
+    //public partial class JobContext : DbContext
+    //{
+    //    public JobContext()
+    //        : base("name=CentralDBEntities1")
+    //    {
+    //    }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+    //        throw new UnintentionalCodeFirstException();
+    //    }
     
-        public virtual DbSet<Job> Jobs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-    }
+    //    public virtual DbSet<Job> Jobs { get; set; }
+    //    public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    //    public virtual DbSet<User> Users { get; set; }
+        
+    //}
 }
